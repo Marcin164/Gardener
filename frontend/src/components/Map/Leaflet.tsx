@@ -7,7 +7,6 @@ type Props = {
 };
 
 const MapClickHandler = (props: any) => {
-  console.log(props.selectMarker);
   useMapEvents({
     click: () => props.selectMarker(null),
   });
