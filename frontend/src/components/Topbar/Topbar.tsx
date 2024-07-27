@@ -1,9 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-type Props = {};
+const Topbar = () => {
+  const location = useLocation();
 
-const Topbar = (props: Props) => {
-  return <div className="h-[90px]">Topbar</div>;
+  return (
+    <div className="h-[90px] flex items-center px-4">
+      <div className="capitalize text-[24px] font-bold">
+        {location.pathname.slice(5)}
+      </div>
+    </div>
+  );
 };
 
 export default Topbar;
