@@ -29,6 +29,7 @@ export const mergeDataWithDevices = (data: any, devices: any) => {
     const device = deviceMap[deviceId];
     const sensor = sensorMap[deviceId] || {};
     return {
+      id: device?._id,
       name: device?.name,
       plant: device?.plant,
       city: device?.city,
@@ -40,4 +41,11 @@ export const mergeDataWithDevices = (data: any, devices: any) => {
   });
 
   return mergedData;
+};
+
+export const separateWords = (inputString: string) => {
+  let cleanedString = inputString.replace(/\//g, " ");
+  let wordsArray = cleanedString.split(" ");
+
+  return wordsArray;
 };

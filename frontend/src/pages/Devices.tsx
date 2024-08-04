@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Table from "../components/Tables/Table";
 import { useQuery } from "@tanstack/react-query";
 import { getDevices } from "../api/devices";
@@ -7,9 +6,7 @@ import Button from "../components/Buttons/Button";
 import { getLatestData } from "../api/data";
 import { getUniqueValues, mergeDataWithDevices } from "../helpers/arrays";
 
-type Props = {};
-
-const Devices = (props: Props) => {
+const Devices = () => {
   const deviceQuery = useQuery({ queryKey: ["devices"], queryFn: getDevices });
   const dataQuery = useQuery({
     queryKey: ["data"],
@@ -19,15 +16,19 @@ const Devices = (props: Props) => {
       ),
   });
 
-  if (deviceQuery?.data && deviceQuery.data?.length <= 0 && dataQuery?.data)
+  if (!deviceQuery?.data && deviceQuery?.data?.length <= 0 && dataQuery?.data)
     return null;
+
   return (
     <div className="w-[calc(100vw-300px)] pl-4 pr-8 relative">
       <div className="flex justify-between">
         <div></div>
         <Button icon={faPlus} text="Add device" onClick={() => {}} />
       </div>
-      <Table data={mergeDataWithDevices(dataQuery?.data, deviceQuery?.data)} />
+      <Table
+        data={mergeDataWithDevices(dataQuery?.data, deviceQuery?.data)}
+        loading={dataQuery?.isPending || deviceQuery?.isPending}
+      />
     </div>
   );
 };

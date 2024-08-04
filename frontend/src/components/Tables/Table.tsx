@@ -5,12 +5,16 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import Badge from "../Badges/Badge";
+import ComponentLoading from "../Loading/ComponentLoading";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   data?: any;
+  loading: boolean;
 };
 
-const Table = ({ data = [] }: Props) => {
+const Table = ({ data = [], loading = false }: Props) => {
+  const navigate = useNavigate();
   const getHumidityValue = (humidity: number) => {
     const humidityInfo = {
       text: "No data",
@@ -140,6 +144,7 @@ const Table = ({ data = [] }: Props) => {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  if (loading) return <ComponentLoading />;
   return (
     <table className="w-full px-8 mt-8">
       <thead className="border-b">
@@ -163,7 +168,13 @@ const Table = ({ data = [] }: Props) => {
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
+          <tr
+            className="cursor-pointer hover:bg-[#6E62E5]/25"
+            key={row.id}
+            onClick={() =>
+              navigate(`/app/devices/device/${data[row.id].id}/general`)
+            }
+          >
             {row.getVisibleCells().map((cell) => (
               <td key={cell.id} className="text-[#4F4F4F] py-2">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -172,22 +183,6 @@ const Table = ({ data = [] }: Props) => {
           </tr>
         ))}
       </tbody>
-      <tfoot>
-        {table.getFooterGroups().map((footerGroup) => (
-          <tr key={footerGroup.id}>
-            {footerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.footer,
-                      header.getContext()
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </tfoot>
     </table>
   );
 };
