@@ -1,10 +1,10 @@
 import { io } from "socket.io-client";
 
-export const getData = () => {
-  const socket = io("ws://127.0.0.1:80", {
-    transports: ["websocket"],
-  });
+export const socket = io("ws://127.0.0.1:80", {
+  transports: ["websocket"],
+});
 
+export const getData = () => {
   socket.on("connect", () => {
     console.log("Connected to the server");
   });

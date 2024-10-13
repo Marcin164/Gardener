@@ -5,9 +5,8 @@ import Map from "./pages/Map";
 import Devices from "./pages/Devices";
 import Device from "./pages/Device";
 import General from "./pages/General";
-import { useQuery } from "@tanstack/react-query";
-import { getDevices } from "./api/devices";
 import Live from "./pages/Live";
+import Watering from "./pages/Watering";
 
 function App() {
   return (
@@ -20,6 +19,7 @@ function App() {
           <Route path="devices/device/:id" element={<Device />}>
             <Route path="general" element={<General />} />
             <Route path="live" element={<Live />} />
+            <Route path="watering" element={<Watering />} />
           </Route>
         </Route>
       </Routes>

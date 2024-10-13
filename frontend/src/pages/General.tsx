@@ -27,7 +27,7 @@ const General = () => {
   const device = deviceQuery?.data.find((device: any) => device._id === id);
 
   return (
-    <div className="pt-4 w-[calc(100vw-300px)] flex">
+    <div className="pt-4 w-[calc(100vw-316px)] flex">
       <div className="w-[60%]">
         <div className="text-[24px] font-bold">Details</div>
         <DeviceUpdateForm device={device} />

@@ -1,4 +1,3 @@
-import React from "react";
 import { removeDevice, updateDevice } from "../../api/devices";
 import Input from "../Inputs/Input";
 import Button from "../Buttons/Button";
@@ -28,8 +27,7 @@ const DeviceUpdateForm = ({ device }: Props) => {
     register,
     handleSubmit,
     setValue,
-    getValues,
-    formState: { isDirty, isSubmitting, isSubmitted, errors },
+    formState: { isDirty, isSubmitting },
   } = useForm<any>({
     defaultValues: {
       name: device?.name,

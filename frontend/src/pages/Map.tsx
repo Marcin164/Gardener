@@ -19,6 +19,7 @@ const Map = () => {
       <div className="absolute bottom-[10px] pl-4 z-[10000]">
         {query.data?.map((device: any) => (
           <DeviceTile
+            key={device._id}
             id={device._id}
             name={device.name}
             city={device.city}
