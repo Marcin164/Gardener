@@ -7,6 +7,7 @@ import Device from "./pages/Device";
 import General from "./pages/General";
 import Live from "./pages/Live";
 import Watering from "./pages/Watering";
+import Data from "./pages/Data";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="general" element={<General />} />
             <Route path="live" element={<Live />} />
             <Route path="watering" element={<Watering />} />
+            <Route path="data" element={<Data />} />
           </Route>
         </Route>
       </Routes>
