@@ -1,9 +1,9 @@
-import { getDevices } from "../api/devices";
+import { getDevices } from "../../api/devices";
 import { useQuery } from "@tanstack/react-query";
-import { getLatestData } from "../api/data";
-import { getUniqueValues } from "../helpers/arrays";
+import { getLatestData } from "../../api/data";
+import { getUniqueValues } from "../../helpers/arrays";
 import { useParams } from "react-router-dom";
-import DeviceUpdateForm from "../components/Forms/DeviceUpdateForm";
+import DeviceUpdateForm from "../../components/Forms/DeviceUpdateForm";
 
 const General = () => {
   const { id } = useParams();

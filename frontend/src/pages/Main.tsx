@@ -9,7 +9,7 @@ const Main = () => {
   return (
     <div className="flex">
       <Navbar />
-      <div>
+      <div className="w-[calc(100%-300px)]">
         <Topbar />
         <Outlet />
       </div>

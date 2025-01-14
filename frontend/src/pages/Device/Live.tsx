@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { socket } from "../api/websocket";
+import { socket } from "../../api/websocket";
 import {
   LineChart,
   Line,
@@ -26,6 +26,8 @@ const Live = () => {
     socket.on("recieve-data", (d: any) => {
       setTemperatureData((prevData) => {
         const updatedData = [...prevData, d];
+        const soilHumidityPercents = Math.floor(d.soilHumidity / 10);
+        d.soilHumidity = soilHumidityPercents;
         if (updatedData.length > 20) {
           updatedData.shift();
         }
@@ -50,12 +52,26 @@ const Live = () => {
         <LineChart data={temperatureData} margin={{ top: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="5 3" />
           <XAxis dataKey="timestamp" />
-          <YAxis />
+          <YAxis type="number" domain={[-30, 50]} />
           <Tooltip />
           <Line
             type="monotone"
-            dataKey="value"
+            dataKey="temperature"
             stroke="#F83A3A"
+            isAnimationActive={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="100%" height={250}>
+        <LineChart data={temperatureData} margin={{ top: 5, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="5 3" />
+          <XAxis dataKey="timestamp" />
+          <YAxis type="number" domain={[0, 100]} />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="soilHumidity"
+            stroke="#1C7CB2"
             isAnimationActive={false}
           />
         </LineChart>

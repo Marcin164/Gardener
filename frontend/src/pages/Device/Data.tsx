@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import DatePicker from "../components/Calendar/Calendar";
+import DatePicker from "../../components/Calendar/Calendar";
 
 type Props = {};
 

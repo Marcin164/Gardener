@@ -25,7 +25,9 @@ const Dashboard = (props: Props) => {
         <div className="capitalize text-[24px] font-bold my-4">
           Events history
         </div>
-        <HistoryTable />
+        <div className="w-[650px]">
+          <HistoryTable />
+        </div>
         <div>Show full history</div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import DataTable from "react-data-table-component";
 import Badge from "../Badges/Badge";
 
@@ -47,13 +46,79 @@ const HistoryTable = (props: Props) => {
       date: "07.08.2024 10:23",
       type: "Warning",
     },
+    {
+      id: 3,
+      action: "Watering",
+      device: "Device 1 - Avocado",
+      date: "08.08.2024 14:53",
+      type: "Info",
+    },
+    {
+      id: 4,
+      action: "Bad humidity",
+      device: "Device 1 - Avocado",
+      date: "07.08.2024 10:23",
+      type: "Warning",
+    },
+    {
+      id: 5,
+      action: "Watering",
+      device: "Device 1 - Avocado",
+      date: "08.08.2024 14:53",
+      type: "Info",
+    },
+    {
+      id: 6,
+      action: "Bad humidity",
+      device: "Device 1 - Avocado",
+      date: "07.08.2024 10:23",
+      type: "Warning",
+    },
+    {
+      id: 7,
+      action: "Watering",
+      device: "Device 1 - Avocado",
+      date: "08.08.2024 14:53",
+      type: "Info",
+    },
+    {
+      id: 8,
+      action: "Bad humidity",
+      device: "Device 1 - Avocado",
+      date: "07.08.2024 10:23",
+      type: "Warning",
+    },
+    {
+      id: 9,
+      action: "Watering",
+      device: "Device 1 - Avocado",
+      date: "08.08.2024 14:53",
+      type: "Info",
+    },
+    {
+      id: 10,
+      action: "Bad humidity",
+      device: "Device 1 - Avocado",
+      date: "07.08.2024 10:23",
+      type: "Warning",
+    },
+    {
+      id: 11,
+      action: "Watering",
+      device: "Device 1 - Avocado",
+      date: "08.08.2024 14:53",
+      type: "Info",
+    },
+    {
+      id: 12,
+      action: "Bad humidity",
+      device: "Device 1 - Avocado",
+      date: "07.08.2024 10:23",
+      type: "Warning",
+    },
   ];
 
-  return (
-    <div className="w-[650px]">
-      <DataTable columns={columns} data={data} />
-    </div>
-  );
+  return <DataTable columns={columns} data={data} />;
 };
 
 export default HistoryTable;
