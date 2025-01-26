@@ -1,6 +1,8 @@
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import Input from "../Inputs/Input";
+import { useState } from "react";
 
 type Props = {
   onChange?: any;
@@ -11,6 +13,7 @@ const DatePicker = ({ onChange, range }: Props) => {
   return (
     <div className="py-4">
       <DateRangePicker onChange={onChange} ranges={[range]} />
+      <div className="flex justify-center gap-4 mt-4"></div>
     </div>
   );
 };

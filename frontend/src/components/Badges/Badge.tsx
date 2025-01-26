@@ -7,7 +7,7 @@ type Props = {
 
 const Badge = ({ text = "", color = "#727272" }: Props) => {
   return (
-    <div className="w-fit px-2 py-1 flex items-center shadow-badge rounded-full">
+    <div className="w-fit px-2 py-1 flex items-center shadow-badge rounded-full bg-white">
       <div
         className="w-[8px] h-[8px] rounded-full"
         style={{ background: color }}

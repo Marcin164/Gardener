@@ -36,7 +36,7 @@ const Input = forwardRef(
             className={`w-full h-[40px] border px-2 ${inputClassName} ${
               unit ? "rounded-l-[10px]" : "rounded-[10px]"
             }`}
-            defaultValue={value}
+            value={value}
             onBlur={onBlur}
             onChange={onChange}
           />
