@@ -17,16 +17,14 @@ export const getLatestData = async (data: any) => {
   }
 };
 
-export const getDevicesProblems = async (data: any) => {
-  console.log("przekazane dane: ");
-  console.log(data);
+export const getDevicesProblems = async (token: any, data: any) => {
   try {
     const result = await axios({
       method: "post",
       url: "http://localhost:3001/data/problems",
       data: { deviceIds: data },
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${token}`,
       },
     });
 

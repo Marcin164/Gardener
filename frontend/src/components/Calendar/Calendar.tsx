@@ -1,8 +1,6 @@
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import Input from "../Inputs/Input";
-import { useState } from "react";
 
 type Props = {
   onChange?: any;

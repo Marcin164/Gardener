@@ -5,19 +5,24 @@ import WorkingDevices from "../components/DashboardCards/WorkingDevices";
 import HistoryTable from "../components/Tables/HistoryTable";
 import { useQuery } from "@tanstack/react-query";
 import { getDevices } from "../api/devices";
-import { getDevicesProblems, getLatestData } from "../api/data";
+import { getDevicesProblems } from "../api/data";
 import { resolveDeviceIdforDevice } from "../helpers/resolvers";
+import { useAuthInfo } from "@propelauth/react";
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  const deviceQuery = useQuery({ queryKey: ["devices"], queryFn: getDevices });
+  const authInfo = useAuthInfo();
+  const deviceQuery = useQuery({
+    queryKey: ["devices"],
+    queryFn: () => getDevices(authInfo.accessToken),
+  });
 
   const deviceIds = deviceQuery.data?.map((device: any) => device._id) || [];
 
   const problemsQuery = useQuery({
     queryKey: ["problems", deviceIds], // Klucz zależny od deviceIds
-    queryFn: () => getDevicesProblems(deviceIds),
+    queryFn: () => getDevicesProblems(authInfo.accessToken, deviceIds),
     enabled: deviceIds.length > 0, // Zapytanie działa tylko, gdy mamy deviceIds
   });
 
@@ -28,8 +33,10 @@ const Dashboard = (props: Props) => {
           Devices problems
         </div>
         {problemsQuery.data &&
+          problemsQuery.data.length > 0 &&
           problemsQuery.data.map((device: any) => (
             <DeviceCard
+              key={device.deviceId}
               name={
                 resolveDeviceIdforDevice(deviceQuery.data, device.deviceId).name
               }

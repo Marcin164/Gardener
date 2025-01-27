@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   CartesianGrid,
   Line,
@@ -11,7 +11,6 @@ import {
 import DatePicker from "../../components/Calendar/Calendar";
 import { useQuery } from "@tanstack/react-query";
 import { getDataInRangeByDeviceId } from "../../api/data";
-import moment from "moment";
 
 type Props = {};
 
